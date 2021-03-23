@@ -1,0 +1,80 @@
+body, html {
+  height:100%;
+  width:100%;
+  background-color:rgb(239, 246, 255);
+  @apply bg-blue-100;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-footer {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding:40px 0 40px;
+}
+
+.App-footer img {
+  width:40px;
+}
+
+:root {
+  --primary: #F4F4F5;
+  --secondary: #A1A1AA;
+}
+
+.blue {
+  --primary: #BFDBFE;
+  --secondary: #3B82F6;
+}
+
+.green {
+  --primary: #BBF7D0;
+  --secondary: #22C55E;
+}
+
+.red {
+  --primary: #FECACA;
+  --secondary: #EF4444;
+}
+
+.purple {
+  --primary: #E9D5FF;
+  --secondary: #A855F7;
+}
+
+.yellow {
+  --primary: #FEF08A;
+  --secondary: #EAB308;
+}
+
+.previous-games .player-name{
+  background-color: var(--primary);
+}
+
+.player-wrapper {
+  @apply p-4 pb-8 border-b-2 m-4 mb-8 shadow-lg rounded-md;
+  background-color: var(--primary);
+  border-color: var(--secondary)
+}
+
+.player-wrapper input, .player-wrapper select {
+  @apply p-1 max-w-full min-w-full border-2 rounded-md text-center;
+  border-color: var(--secondary)
+}
