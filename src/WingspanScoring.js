@@ -3,6 +3,7 @@ import firestore from "./services/firestore"
 import SetPlayerCount from "./SetPlayerCount"
 import PlayerTable from "./PlayerTable"
 import PreviousMatches from "./PreviousMatches"
+import LoginScreen from "./Login"
 import Menu from "./Menu"
 
 var db = firestore.firestore()
@@ -25,6 +26,9 @@ class WingspanScoring extends React.Component {
       winningIds: [],
       winningNames: "",
       statsTable: false,
+      email: "",
+      password: "",
+      signedIn: false,
     }
     this.handlePlayerNumberChange = this.handlePlayerNumberChange.bind(this)
     this.handlePlayerNumberDecrease = this.handlePlayerNumberDecrease.bind(this)
@@ -37,6 +41,10 @@ class WingspanScoring extends React.Component {
     this.validateInput = this.validateInput.bind(this)
     this.handleGameButton = this.handleGameButton.bind(this)
     this.handlePreviousButton = this.handlePreviousButton.bind(this)
+    this.handleEmail = this.handleEmail.bind(this)
+    this.handlePassword = this.handlePassword.bind(this)
+    this.handleSignIn = this.handleSignIn.bind(this)
+    this.handleSignOut = this.handleSignOut.bind(this)
   }
 
   handleGameButton(incomingStatState) {
@@ -230,6 +238,55 @@ class WingspanScoring extends React.Component {
     }))
   }
 
+  handleEmail(value) {
+    this.setState({
+      email: value,
+    })
+  }
+
+  handlePassword(value) {
+    this.setState({
+      password: value,
+    })
+  }
+
+  handleSignIn() {
+    console.log(this.state.email, this.state.password, "works")
+    firestore
+      .auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(userCredential => {
+        // Signed in
+        var user = userCredential.user
+        this.setState({
+          signedIn: true,
+        })
+        console.log(user)
+        // ...
+      })
+      .catch(error => {
+        var errorCode = error.code
+        var errorMessage = error.message
+        console.log(errorCode, errorMessage)
+      })
+  }
+
+  handleSignOut() {
+    firestore
+      .auth()
+      .signOut()
+      .then(() => {
+        this.handleGameButton(false)
+        this.setState({
+          signedIn: false,
+        })
+      })
+      .catch(error => {
+        // An error happened.
+        console.log(error)
+      })
+  }
+
   render() {
     var displayScreen = []
     if (!this.state.statsTable) {
@@ -257,6 +314,13 @@ class WingspanScoring extends React.Component {
     }
     return (
       <div key="wingspan">
+        <LoginScreen
+          signedIn={this.state.signedIn}
+          onEmail={this.handleEmail}
+          onPassword={this.handlePassword}
+          onSignIn={this.handleSignIn}
+          onSignOut={this.handleSignOut}
+        />
         <Menu
           onGameButton={this.handleGameButton}
           onPreviousButton={this.handlePreviousButton}

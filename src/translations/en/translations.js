@@ -27,4 +27,5 @@ export const TRANSLATIONS_EN = {
   back: "Back",
   next: "Next",
   nogamesexist: "Sorry, no previous games exist.",
+  logout: "Logout",
 }
