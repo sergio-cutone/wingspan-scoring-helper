@@ -72,7 +72,7 @@ class LoginScreen extends React.Component {
                 />
               </p>
               <button
-                className="bg-blue-500 py-2 px-4 rounded text-white"
+                className="hover:bg-blue-300 bg-blue-500 py-2 px-4 rounded text-white"
                 onClick={e => this.props.onSignIn()}
               >
                 Sign In
