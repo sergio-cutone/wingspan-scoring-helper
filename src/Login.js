@@ -9,6 +9,7 @@ class LoginScreen extends React.Component {
     this.state = {
       email: "",
     }
+    this.handleKeyDown = this.handleKeyDown.bind(this)
   }
   componentDidMount() {
     // Typical usage (don't forget to compare props):
@@ -20,6 +21,12 @@ class LoginScreen extends React.Component {
         email: email,
       })
       this.props.onEmail(email)
+    }
+  }
+  handleKeyDown(e) {
+    if (e.key === "Enter") {
+      this.props.onPassword("")
+      this.props.onSignIn()
     }
   }
   render() {
@@ -61,6 +68,7 @@ class LoginScreen extends React.Component {
                   name="pw"
                   className="border-2 p-2 border-black rounded"
                   onChange={e => this.props.onPassword(e.target.value)}
+                  onKeyDown={this.handleKeyDown}
                 />
               </p>
               <button

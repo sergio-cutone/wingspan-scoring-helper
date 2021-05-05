@@ -251,7 +251,6 @@ class WingspanScoring extends React.Component {
   }
 
   handleSignIn() {
-    console.log(this.state.email, this.state.password, "works")
     firestore
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
@@ -261,7 +260,6 @@ class WingspanScoring extends React.Component {
         this.setState({
           signedIn: true,
         })
-        console.log(user)
         // ...
       })
       .catch(error => {
