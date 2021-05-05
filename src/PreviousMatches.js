@@ -155,7 +155,7 @@ class PreviousMatches extends React.Component {
           {this.state.matches.map((match, i) => (
             <div
               className="rounded-lg shadow-lg m-2 mb-5 bg-gray-100 p-1 border-2 border-gray-300"
-              key={i}
+              key={`matches-${i}`}
             >
               <div className="text-xs mb-1">
                 {monthNames[match.data.timestamp.toDate().getUTCMonth()]}{" "}
@@ -200,7 +200,10 @@ class PreviousMatches extends React.Component {
                 {match.data.players
                   .sort((a, b) => b.total - a.total)
                   .map((player, i) => (
-                    <div className={"bg-white " + player.colour} key={i}>
+                    <div
+                      className={"bg-white " + player.colour}
+                      key={`match-${i}`}
+                    >
                       {this.cellWrap(player.playername || 0, "player-name")}
                       {this.cellWrap(player.score.birds || 0)}
                       {this.cellWrap(player.score.bonuscards || 0)}

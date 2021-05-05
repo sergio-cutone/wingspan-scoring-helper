@@ -10,6 +10,7 @@ class LoginScreen extends React.Component {
       email: "",
     }
     this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.handleEmail = this.handleEmail.bind(this)
   }
   componentDidMount() {
     // Typical usage (don't forget to compare props):
@@ -22,6 +23,12 @@ class LoginScreen extends React.Component {
       })
       this.props.onEmail(email)
     }
+  }
+  handleEmail(value) {
+    this.props.onEmail(value)
+    this.setState({
+      email: value,
+    })
   }
   handleKeyDown(e) {
     if (e.key === "Enter") {
@@ -56,7 +63,7 @@ class LoginScreen extends React.Component {
                   type="email"
                   name="email"
                   className="border-2 p-2 border-black rounded"
-                  onChange={e => this.props.onEmail(e.target.value)}
+                  onChange={e => this.handleEmail(e.target.value)}
                   value={this.state.email}
                 />
               </p>
