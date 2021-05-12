@@ -41,7 +41,7 @@ class LoginScreen extends React.Component {
       <>
         {this.props.signedIn ? (
           <div
-            className="fixed top-1 right-2 cursor-pointer hover:text-white text-blue-700"
+            className="absolute top-1 right-2 cursor-pointer hover:text-white text-blue-700"
             onClick={e => this.props.onSignOut()}
           >
             <Translation>{t => t("logout")}</Translation>

@@ -11,7 +11,7 @@ db.settings({
   timestampsInSnapshots: true,
 })
 
-const firebaseDoc = ""
+const firebaseDoc = require("./services/fb-collection")
 
 class WingspanScoring extends React.Component {
   constructor(props) {

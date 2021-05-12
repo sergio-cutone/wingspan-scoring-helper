@@ -103,3 +103,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+src/services/fb-collection.js
+src/services/fb-config.js

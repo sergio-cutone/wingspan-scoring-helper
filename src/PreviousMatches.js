@@ -3,7 +3,7 @@ import "./translations/i18n"
 import { Translation } from "react-i18next"
 
 let lastVisible, firstVisible
-const scoreSheetsPerPage = 2
+const scoreSheetsPerPage = require("./services/fb-mpp")
 
 class PreviousMatches extends React.Component {
   constructor(props) {

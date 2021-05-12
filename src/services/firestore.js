@@ -2,15 +2,8 @@ import firebase from "firebase"
 import "firebase/firestore"
 import "firebase/auth"
 
-const firebaseConfig = {
-  apiKey: "<apiKey />",
-  authDomain: "<authDomain />",
-  projectId: "<projectId />",
-  storageBucket: "<storageBucket />",
-  messagingSenderId: "<messagingSenderId/>",
-  appId: "<appId/>",
-}
+const config = require("./fb-config")
 
-firebase.initializeApp(firebaseConfig)
+firebase.initializeApp(config)
 
 export default firebase
